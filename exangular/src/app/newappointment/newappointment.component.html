@@ -1,0 +1,43 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+      <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+      <title>Create</title>
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  </head>
+
+  <body>
+    <h1>
+      New Appointment:
+    </h1>
+    <div class="tbl-header">
+        <form (submit)="createPoll()" #formData='ngForm'>
+        Date: <input name='date' type="date"   [(ngModel)] = "newpoll.date"  #tdate='ngModel'/> <br>  
+        time: <select name="time" type="text" type="text" [(ngModel)] = "newpoll.time" multiple>
+                <option value="8">8:00 AM</option>
+                <option value="9">9:00 AM</option>
+                <option value="10">10:00 AM</option>
+                <option value="11">11:00 AM</option>
+                <option value="12">12:00 PM</option>
+                <option value="1">1:00 PM</option>
+                <option value="2">2:00 PM</option>
+                <option value="3">3:00 PM</option>
+                <option value="4">4:00 PM</option>
+                <option value="5">5:00 PM</option>
+              </select>
+        Complain: <input name='complain' type="text" required minlength="10" [(ngModel)] = "newpoll.complain" #acomplain='ngModel'/> <br>
+        <span *ngIf="acomplain.invalid && (acomplain.dirty || acomplain.touched)"> 
+          <span *ngIf="acomplain.errors.required" [ngStyle]="{'color': 'red'}">complain is required.</span>  
+          <span *ngIf="acomplain.errors.minlength" [ngStyle]="{'color': 'red'}">Name must be at least 10 characters long.</span>  
+        </span>
+        <button><a [routerLink] = "['/dashboard']">Cancel</a></button><input class='green' [disabled]='today > newpoll.date' type="submit" value="Add Appointment"> 
+      </form>
+    </div>
+  </body> 
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+      <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+      <title>Dashboard</title>
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  </head>
+  <body>
+    <a><span (click) = "logout()"><button type="button" class="logout">Logout</button></span></a>
+
+    <h1>Doctor's Appointments</h1>{{name}}
+
+    <table col-width = "50%">
+      <thead>
+          <tr>
+            <th>Date</th>
+            <th>Time</th>
+            <th>Patient Name</th>  
+            <th>Complain</th>
+            <th>Cancel Your Appointment</th>            
+          </tr>
+      </thead>
+      <tr  *ngFor = "let poll of polls">
+        <td>{{poll.date | date:'longDate' }}</td>
+        <td *ngIf = "poll.time <= 5">{{poll.time}} PM</td>
+        <td *ngIf = "poll.time == 12">{{poll.time}} PM</td>
+        <td *ngIf = "poll.time < 12  && poll.time >= 8 ">{{poll.time}} AM</td>
+        <td>{{poll.creator}}</td>
+        <td>{{poll.complain}}</td>
+        <td><p  *ngIf = "poll.creator == name" ><button type="button" name="button" (click) = "deletePoll(poll._id)">Cancel</button></p></td>          
+      </tr>
+    </table>
+
+    <button><a [routerLink] = "['/new_appointment']">Add New Appointment</a></button>
+  </body>
+</html>
+
+
+
+
+
