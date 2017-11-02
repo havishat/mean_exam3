@@ -20,14 +20,13 @@ export class DashboardComponent implements OnInit {
   private input = {
     key: ''
 };
-private count = 0; 
+
 
   ngOnInit() {
     if(this.user.session == null){
       this._router.navigateByUrl('/')
     }
     this.retrieveid();
-
     this.displayPolls();
   }
 
@@ -44,24 +43,10 @@ private count = 0;
     })
   }
 
-
-  // countthree (data) {
-  //   var cdate = data[0]
-  //   if(this.count < 3) {
-  //     for(let i of data) {
-  //       if(i.date == cdate.date) {
-  //         this.count += 1;
-  //       }
-  //     }
-  //     console.log(this.count)
-  //   }
-  //   }
-
   displayPolls() {
     this.user.displayPolls((data) => {
-      // console.log("data",data)
       this.polls = data
-      console.log("display all appointments polls", this.polls)
+      console.log("display all appointments polls", this.polls.creator)
     });
   }
 

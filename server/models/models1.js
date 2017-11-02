@@ -10,7 +10,7 @@ mongoose.model('Login', LoginSchema);
 
 
 var AppointmentSchema = new mongoose.Schema({
-  date: {type: Date},
+  date: {type: String},
   time: {type: String},
   complain: {type: String,  required: [true, "Please enter complain."], minlength: 10},  
   creator: {type: Schema.Types.String, ref: "Poll"},

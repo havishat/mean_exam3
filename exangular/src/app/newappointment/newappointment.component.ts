@@ -14,7 +14,7 @@ export class NewappointmentComponent implements OnInit {
   private name: String;
 
   newpoll = {
-    date: Date,
+    date: '',
     time: '',
     complain: '',
     creator: '',
@@ -22,8 +22,6 @@ export class NewappointmentComponent implements OnInit {
 
   // private count = 0; 
 
-  private today = new Date();
-  private dd = this.today.getDate();
 
 
   ngOnInit() {
@@ -32,21 +30,16 @@ export class NewappointmentComponent implements OnInit {
 
   retrieveid() {
     this._us.retrieveid((data) => {
-      // console.log("data?")
       this.name = data;
       // console.log("2name",this.name)
   })
   }
 
-  // futuredate() {
-  //   var today = new Date()
-  //   if()
-  // }
 
  
 
   createPoll() {
-    console.log("today date", this.today)
+    
     this.newpoll.creator = this._us.session.name;
     console.log("poll", this.newpoll)
     this._router.navigate(["/dashboard"])
