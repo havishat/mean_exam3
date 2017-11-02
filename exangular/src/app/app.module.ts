@@ -12,13 +12,17 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { NewappointmentComponent } from './newappointment/newappointment.component';
+import { FilterPipe } from './filter.pipe';
+import { FiltercomplainPipe } from './filtercomplain.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     DashboardComponent,
-    NewappointmentComponent
+    NewappointmentComponent,
+    FilterPipe,
+    FiltercomplainPipe,
   ],
   imports: [
     BrowserModule,
