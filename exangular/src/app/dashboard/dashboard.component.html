@@ -16,7 +16,6 @@
     <h1>Doctor's Appointments</h1>{{name}}
 
     <input [(ngModel)]="searchText" placeholder="search of creator">
-    <input [(ngModel)]="searchText2" placeholder="search of complain">
     <table col-width = "50%">
       <thead>
           <tr>
@@ -27,7 +26,7 @@
             <th>Cancel Your Appointment</th>            
           </tr>
       </thead>
-      <tr  *ngFor = "let poll of polls  | filter : searchText | filter : searchText2">
+      <tr  *ngFor = "let poll of polls  | filter : searchText ">
         <td>{{poll.date | date: 'fullDate' }}</td>
         <td *ngIf = "poll.time <= 5">{{poll.time}} PM</td>
         <td *ngIf = "poll.time == 12">{{poll.time}} PM</td>
